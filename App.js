@@ -15,11 +15,12 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+// const windowHeight = Dimensions.get('window').height;
 
 export default function App() {
   return (
     <View style={styles.mainContainer}>
+    {/* Background Header Image */}
       <ImageBackground
         source={require('./assets/background.png')}
         resizeMode="cover"
@@ -27,6 +28,7 @@ export default function App() {
       >
       {/* Top Banner View */}
       <View>
+      {/* Banner Location */}
         <View style={styles.locationContainer}>
            <Text style={styles.locationText}>Your Location</Text>
            <MaterialIcons name="keyboard-arrow-down" size={24} color="white" />
@@ -35,15 +37,16 @@ export default function App() {
            <Ionicons name="location-outline" size={24} color="white" />
            <Text style={styles.cityText}>Manchester</Text>
         </View>
+        {/* Top navigation icons */}
         <View style={styles.searchBell}>
         <View style={styles.iconCircle}>
          <FontAwesome name="search" size={18} color="white" />
         </View>
-
         <View style={styles.iconCircle}>
          <EvilIcons name="bell" size={26} color="white" />
         </View>
         </View>
+        {/* Header Text */}
       </View>
       <View>
        <Text style={styles.lowerText}>
@@ -51,10 +54,12 @@ export default function App() {
        </Text>
       </View>
       </ImageBackground>
+      {/* Category Text */}
       <View style={styles.categoryText}>
         <Text style={styles.findCategoryText}>Find by category</Text>
         <Text style={styles.seeAllText}>See all</Text>
       </View>
+      {/* Category Cards */}
       <View style={styles.categoryImages}>
         <View style={styles.foodCategory1}>
           <Image source={require('./assets/burger.png')} style={styles.foodImage} />
@@ -73,6 +78,7 @@ export default function App() {
           <Text>Pizza</Text>
         </View>
       </View>
+      {/* Food list */}
       <View style={styles.foodList}>
       <View style={styles.foodContainer} >
         <View style={styles.favorite}>
@@ -119,11 +125,13 @@ export default function App() {
          </View>
       </View>
       </View>
+      {/* Status Bar configuration */}
       <StatusBar style='light'/>
     </View>
   );
 }
 
+{/* Style Sheet */}
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
