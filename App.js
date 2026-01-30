@@ -14,8 +14,8 @@ import EvilIcons from '@expo/vector-icons/EvilIcons';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 
-// const windowWidth = Dimensions.get('window').width;
-// const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 export default function App() {
   return (
@@ -56,7 +56,7 @@ export default function App() {
         <Text style={styles.seeAllText}>See all</Text>
       </View>
       <View style={styles.categoryImages}>
-        <View style={styles.foodCategory}>
+        <View style={styles.foodCategory1}>
           <Image source={require('./assets/burger.png')} style={styles.foodImage} />
           <Text>Burger</Text>
         </View>
@@ -73,6 +73,7 @@ export default function App() {
           <Text>Pizza</Text>
         </View>
       </View>
+      <View style={styles.foodList}>
       <View style={styles.foodContainer} >
         <View style={styles.favorite}>
          <Feather name="heart" size={18} color="red" />
@@ -94,6 +95,29 @@ export default function App() {
           $17,820
          </Text>
          </View>
+      </View>
+      <View style={styles.foodContainer} >
+        <View style={styles.favorite}>
+         <Feather name="heart" size={18} color="red" />
+        </View>
+        <Image source={require('./assets/burger2.png')} style={styles.foodItem} />
+        <Text style={styles.foodText}>Burger With Meat</Text>
+        <View style={styles.foodRating}>
+         <View style={styles.star}>
+          <AntDesign name="star" size={18} color="orange" />
+          <Text>4.9</Text>
+         </View>
+         <View style={styles.distance}>
+          <Ionicons name="location-outline" size={18} color="orange" />
+          <Text>120m</Text>
+         </View>
+        </View>
+        <View style={styles.priceContainer}>
+          <Text style={styles.price}>
+          $12,260
+         </Text>
+         </View>
+      </View>
       </View>
       <StatusBar style='light'/>
     </View>
@@ -146,7 +170,7 @@ const styles = StyleSheet.create({
  },
 
   iconCircle: {
-    width: 44,
+    width: windowWidth * 0.12,
     height: 44,
     borderRadius: 22,
     borderWidth: 1,
@@ -168,7 +192,7 @@ const styles = StyleSheet.create({
   justifyContent: 'space-between',
   paddingHorizontal: 20,
   marginBottom: 12,
-  marginTop: -150
+  marginTop: -150,
  },
 
  categoryImages: {
@@ -184,6 +208,15 @@ const styles = StyleSheet.create({
   width: 80,
   backgroundColor: '#fdbe89'
  },
+
+ foodCategory1: {
+  borderRadius: 12,
+  padding: 16,
+  alignItems: 'center',
+  width: 80,
+  backgroundColor: '#ff5e00d0'
+ },
+
 
  foodImage: {
   width: 30,
@@ -262,5 +295,9 @@ const styles = StyleSheet.create({
   top: 14,
   right: 14,
   backgroundColor: 'white'
+ },
+
+ foodList: {
+  flexDirection: 'row'
  }
 });
