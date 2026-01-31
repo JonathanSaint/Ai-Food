@@ -9,8 +9,8 @@ export default function CategoryCard({name, image}) {
     return (
         <View style={styles.categoryImages}>
             <View style={styles.foodCategory}>
-                <Image source={image} style={styles.foodImage} />
-                <Text>{name}</Text>
+              <Image source={image} style={styles.foodImage} />
+              <Text>{name}</Text>
             </View>
         </View>
     );
@@ -30,4 +30,5 @@ const styles = StyleSheet.create({
   width: 30,
   height: 30,
  },
+ 
 });

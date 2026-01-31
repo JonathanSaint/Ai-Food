@@ -5,7 +5,7 @@ import {
   View, 
   ImageBackground,
   Dimensions,
-  // Image,
+  Image,
 } from 'react-native';
 import FoodItem from './components/FoodItems';
 import CategoryCard from './components/CategoryCards';
@@ -14,52 +14,55 @@ import {
   Ionicons,
   FontAwesome,
   EvilIcons,
-  // AntDesign,
-  // Feather,
+  AntDesign,
+  Feather,
 } from '@expo/vector-icons';
 
 const windowWidth = Dimensions.get('window').width;
-// const windowHeight = Dimensions.get('window').height;
+const windowHeight = Dimensions.get('window').height;
 
 export default function App() {
   return (
     <View style={styles.mainContainer}>
-    {/* Background Header Image */}
+
+     {/* Background Header Image */}
+
       <ImageBackground
         source={require('./assets/background.png')}
         resizeMode="cover"
         style={styles.foodBanner}
       >
-      {/* Top Banner View */}
-      <View>
-      {/* Banner Location */}
-        <View style={styles.locationContainer}>
+
+       {/* Top Banner View */}
+
+        <View>
+          <View style={styles.locationContainer}>
            <Text style={styles.locationText}>Your Location</Text>
            <MaterialIcons name="keyboard-arrow-down" size={24} color="white" />
-        </View>
-        <View style={styles.cityContainer}>
+          </View>
+          <View style={styles.cityContainer}>
            <Ionicons name="location-outline" size={24} color="white" />
            <Text style={styles.cityText}>Manchester</Text>
+          </View>
+
+         {/* Top navigation icons */}
+
+          <View style={styles.searchBell}>
+            <View style={styles.iconCircle}>
+             <FontAwesome name="search" size={18} color="white" />
+            </View>
+            <View style={styles.iconCircle}>
+             <EvilIcons name="bell" size={26} color="white" />
+            </View>
+          </View>
         </View>
-        {/* Top navigation icons */}
-        <View style={styles.searchBell}>
-        <View style={styles.iconCircle}>
-         <FontAwesome name="search" size={18} color="white" />
+        <View>
+         <Text style={styles.lowerText}>Provide the best food for you</Text>
         </View>
-        <View style={styles.iconCircle}>
-         <EvilIcons name="bell" size={26} color="white" />
-        </View>
-        </View>
-        {/* Header Text */}
-      </View>
-      <View>
-       <Text style={styles.lowerText}>
-         Provide the best food for you
-       </Text>
-      </View>
       </ImageBackground>
       
       {/* Category Text */}
+
       <View style={styles.categoryText}>
         <Text style={styles.findCategoryText}>Find by category</Text>
         <Text style={styles.seeAllText}>See all</Text>
@@ -176,71 +179,8 @@ const styles = StyleSheet.create({
   fontWeight: '500'
  }, 
 
- foodItem: {
-  width: 141,
-  height: 120,
-  borderRadius: 20,
-  position: 'relative'
- },
-
- foodContainer: {
-  marginLeft: 20,
-  marginTop: 20,
-  width: 160,
-  backgroundColor: '#fcf8f3',
-  borderRadius: 20,
-  padding: 10,
- },
-
- foodText: {
-  marginTop: 8,
-  fontSize: 14,
-  fontWeight: '600',
-  textAlign: 'center'
- }, 
-
- foodRating: {
-  flexDirection: 'row',
-  margin: 6,
-  justifyContent: 'space-between',
- },
-
- star: {
-  flexDirection: 'row'
- },
-
- distance: {
-  flexDirection: 'row',
-  alignItems: 'center',
-  gap: 4,
- },
-
- price: {
-  color: 'orange',
-  fontSize: 20,
-  fontWeight: '700'
- },
-
- priceContainer: {
-  flexDirection: 'row',
- },
-
- favorite: {
-  width: 28,
-  height: 28,
-  borderRadius: 14,
-  borderColor: 'white',
-  borderWidth: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
-  position: 'absolute', 
-  zIndex: 10,
-  top: 14,
-  right: 14,
-  backgroundColor: 'white'
- },
-
  foodList: {
   flexDirection: 'row'
- }
+ },
+
 });

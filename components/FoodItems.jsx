@@ -9,27 +9,27 @@ import {Ionicons, Feather, AntDesign} from '@expo/vector-icons';
 export default function FoodItem({title, image, price, distance, rating}) {
     return (
         <View style={styles.foodContainer} >
-                <View style={styles.favorite}>
-                 <Feather name="heart" size={18} color="red" />
-                </View>
+            <View style={styles.favorite}>
+                <Feather name="heart" size={18} color="red" />
+            </View>
                 <Image source={image} style={styles.foodItem} />
                 <Text style={styles.foodText}>{title}</Text>
-                <View style={styles.foodRating}>
-                 <View style={styles.star}>
+            <View style={styles.foodRating}>
+                <View style={styles.star}>
                   <AntDesign name="star" size={18} color="orange" />
                   <Text>{rating}</Text>
-                 </View>
+                </View>
                  <View style={styles.distance}>
                   <Ionicons name="location-outline" size={18} color="orange" />
                   <Text>{distance}</Text>
                  </View>
-                </View>
-                <View style={styles.priceContainer}>
-                  <Text style={styles.price}>
+            </View>
+            <View style={styles.priceContainer}>
+                <Text style={styles.price}>
                   {price}
-                 </Text>
-                 </View>
-              </View>
+                </Text>
+            </View>
+        </View>
     );
 }
 
@@ -97,4 +97,5 @@ const styles = StyleSheet.create({
   right: 14,
   backgroundColor: 'white'
  },
+ 
 });
