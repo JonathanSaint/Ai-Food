@@ -5,14 +5,18 @@ import {
   View, 
   ImageBackground,
   Dimensions,
-  Image,
+  // Image,
 } from 'react-native';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import EvilIcons from '@expo/vector-icons/EvilIcons';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import Feather from '@expo/vector-icons/Feather';
+import FoodItem from './components/FoodItems';
+import CategoryCard from './components/CategoryCards';
+import {
+  MaterialIcons,
+  Ionicons,
+  FontAwesome,
+  EvilIcons,
+  // AntDesign,
+  // Feather,
+} from '@expo/vector-icons';
 
 const windowWidth = Dimensions.get('window').width;
 // const windowHeight = Dimensions.get('window').height;
@@ -54,79 +58,32 @@ export default function App() {
        </Text>
       </View>
       </ImageBackground>
+      
       {/* Category Text */}
       <View style={styles.categoryText}>
         <Text style={styles.findCategoryText}>Find by category</Text>
         <Text style={styles.seeAllText}>See all</Text>
       </View>
+
       {/* Category Cards */}
+
       <View style={styles.categoryImages}>
-        <View style={styles.foodCategory1}>
-          <Image source={require('./assets/burger.png')} style={styles.foodImage} />
-          <Text>Burger</Text>
-        </View>
-        <View style={styles.foodCategory}>
-          <Image source={require('./assets/taco.png')} style={styles.foodImage} />
-          <Text>Taco</Text>
-        </View>
-        <View style={styles.foodCategory}>
-          <Image source={require('./assets/drink.png')} style={styles.foodImage} />
-          <Text>Drink</Text>
-        </View>
-        <View style={styles.foodCategory}>
-          <Image source={require('./assets/pizza.png')} style={styles.foodImage} />
-          <Text>Pizza</Text>
-        </View>
+        <CategoryCard name={"Burger"} image={require('./assets/burger.png')} />
+        <CategoryCard name={"Taco"} image={require('./assets/taco.png')} />
+        <CategoryCard name={"Drink"} image={require('./assets/drink.png')} />
+        <CategoryCard name={"Pizza"} image={require('./assets/pizza.png')} />
       </View>
+
       {/* Food list */}
+
       <View style={styles.foodList}>
-      <View style={styles.foodContainer} >
-        <View style={styles.favorite}>
-         <Feather name="heart" size={18} color="red" />
-        </View>
-        <Image source={require('./assets/burger1.png')} style={styles.foodItem} />
-        <Text style={styles.foodText}>Ordinary Burgers</Text>
-        <View style={styles.foodRating}>
-         <View style={styles.star}>
-          <AntDesign name="star" size={18} color="orange" />
-          <Text>4.5</Text>
-         </View>
-         <View style={styles.distance}>
-          <Ionicons name="location-outline" size={18} color="orange" />
-          <Text>190m</Text>
-         </View>
-        </View>
-        <View style={styles.priceContainer}>
-          <Text style={styles.price}>
-          $17,820
-         </Text>
-         </View>
+        <FoodItem title={"Ordinary Burgers"} image={require('./assets/burger1.png')} price={"$17,820"} distance={"190m"} rating={"4.5"} />
+        <FoodItem title={"Burger With Meat"} image={require('./assets/burger2.png')} price={"$12,260"} distance={"120m"} rating={"4.9"} />
       </View>
-      <View style={styles.foodContainer} >
-        <View style={styles.favorite}>
-         <Feather name="heart" size={18} color="red" />
-        </View>
-        <Image source={require('./assets/burger2.png')} style={styles.foodItem} />
-        <Text style={styles.foodText}>Burger With Meat</Text>
-        <View style={styles.foodRating}>
-         <View style={styles.star}>
-          <AntDesign name="star" size={18} color="orange" />
-          <Text>4.9</Text>
-         </View>
-         <View style={styles.distance}>
-          <Ionicons name="location-outline" size={18} color="orange" />
-          <Text>120m</Text>
-         </View>
-        </View>
-        <View style={styles.priceContainer}>
-          <Text style={styles.price}>
-          $12,260
-         </Text>
-         </View>
-      </View>
-      </View>
+
       {/* Status Bar configuration */}
       <StatusBar style='light'/>
+
     </View>
   );
 }
@@ -142,6 +99,12 @@ const styles = StyleSheet.create({
     height: '58%',
     width: '100%'
   },
+
+  categoryImages: {
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+  paddingHorizontal: 10,
+ },
 
   locationContainer: {
     paddingTop: 50,
@@ -160,7 +123,7 @@ const styles = StyleSheet.create({
   locationText: {
     color: '#ffff',
     fontSize: 18,
-    fontWeight: 400,
+    fontWeight: '400',
   },
 
   cityText: {
@@ -201,34 +164,6 @@ const styles = StyleSheet.create({
   paddingHorizontal: 20,
   marginBottom: 12,
   marginTop: -150,
- },
-
- categoryImages: {
-  flexDirection: 'row',
-  justifyContent: 'space-around',
-  paddingHorizontal: 10,
- },
-
- foodCategory: {
-  borderRadius: 12,
-  padding: 16,
-  alignItems: 'center',
-  width: 80,
-  backgroundColor: '#fdbe89'
- },
-
- foodCategory1: {
-  borderRadius: 12,
-  padding: 16,
-  alignItems: 'center',
-  width: 80,
-  backgroundColor: '#ff5e00d0'
- },
-
-
- foodImage: {
-  width: 30,
-  height: 30,
  },
 
  findCategoryText: {
