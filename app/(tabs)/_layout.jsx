@@ -1,17 +1,26 @@
-import { Stack } from "expo-router";
-import { FontAwesome } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 
-export default function App() {
+export default function TabsLayout() {
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: "orange" }}>
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           headerShown: false,
           title: "Home",
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="home" color={color} />
+            <MaterialIcons name="restaurant-menu" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="notifications"
+        options={{
+          headerShown: false,
+          title: "Notifications",
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="notifications" size={24} color={color} />
           ),
         }}
       />

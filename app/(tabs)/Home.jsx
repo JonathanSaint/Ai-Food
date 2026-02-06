@@ -6,6 +6,7 @@ import {
   ImageBackground,
   Dimensions,
   ScrollView,
+  Pressable,
 } from "react-native";
 import FoodItem from "./../../components/FoodItems";
 import CategoryCard from "./../../components/CategoryCards";
@@ -17,11 +18,12 @@ import {
   AntDesign,
   Feather,
 } from "@expo/vector-icons";
+import { Link } from "expo-router";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-export default function Home() {
+export default function home() {
   return (
     <ScrollView style={styles.mainContainer}>
       {/* Background Header Image */}
@@ -49,9 +51,11 @@ export default function Home() {
             <View style={styles.iconCircle}>
               <FontAwesome name="search" size={18} color="white" />
             </View>
-            <View style={styles.iconCircle}>
-              <EvilIcons name="bell" size={26} color="white" />
-            </View>
+            <Link href="/notifications" asChild>
+              <Pressable style={styles.iconCircle}>
+                <EvilIcons name="bell" size={26} color="white" />
+              </Pressable>
+            </Link>
           </View>
         </View>
         <View>
