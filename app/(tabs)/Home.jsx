@@ -93,28 +93,28 @@ export default function Home() {
         <FoodItem
           title={"Ordinary Burgers"}
           image={require("./../../assets/burger1.png")}
-          price={"$17,820"}
+          price={"UGX 17,820"}
           distance={"190m"}
           rating={"4.5"}
         />
         <FoodItem
           title={"Burger With Meat"}
           image={require("./../../assets/burger2.png")}
-          price={"$12,260"}
+          price={"UGX 12,260"}
           distance={"120m"}
           rating={"4.9"}
         />
         <FoodItem
           title={"Small Size Burger"}
           image={require("./../../assets/burger3.png")}
-          price={"$9,170"}
+          price={"UGX 9,170"}
           distance={"80m"}
           rating={"3.2"}
         />
         <FoodItem
           title={"King Size Burger"}
           image={require("./../../assets/burger4.png")}
-          price={"$20,620"}
+          price={"UGX 20,620"}
           distance={"590m"}
           rating={"5.0"}
         />
