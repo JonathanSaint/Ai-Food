@@ -34,6 +34,17 @@ export default function App() {
           },
         }}
       />
+      <Stack.Screen
+        name="HelpCenter"
+        options={{
+          headerShown: true,
+          headerTitle: "Help Center",
+          headerBackTitle: "Back",
+          headerStyle: {
+            backgroundColor: "white",
+          },
+        }}
+      />
     </Stack>
   );
 }

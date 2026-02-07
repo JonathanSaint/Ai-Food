@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
 
   changeImage: {
-    height: 7,
+    height: 5,
     width: 50,
     backgroundColor: "#ffffff",
     alignSelf: "center",
