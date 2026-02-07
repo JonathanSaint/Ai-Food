@@ -8,8 +8,8 @@ import {
   ScrollView,
   Pressable,
 } from "react-native";
-import FoodItem from "./../../components/FoodItems";
-import CategoryCard from "./../../components/CategoryCards";
+import FoodItem from "../../components/FoodItems";
+import CategoryCard from "../../components/CategoryCards";
 import {
   MaterialIcons,
   Ionicons,
@@ -23,7 +23,7 @@ import { Link } from "expo-router";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-export default function home() {
+export default function Menu() {
   return (
     <ScrollView style={styles.mainContainer}>
       {/* Background Header Image */}
@@ -51,7 +51,7 @@ export default function home() {
             <View style={styles.iconCircle}>
               <FontAwesome name="search" size={18} color="white" />
             </View>
-            <Link href="/notifications" asChild>
+            <Link href="/Notifications" asChild>
               <Pressable style={styles.iconCircle}>
                 <EvilIcons name="bell" size={26} color="white" />
               </Pressable>
