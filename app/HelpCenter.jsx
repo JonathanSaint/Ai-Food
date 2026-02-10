@@ -68,30 +68,26 @@ const styles = StyleSheet.create({
 
   headerText: {
     fontWeight: "600",
-    fontSize: 16,
+    fontSize: 18,
   },
 
   headerTextContainer: {
     marginTop: 10,
     marginHorizontal: 20,
+    marginBottom: 10,
   },
 
   searchBar: {
+    borderWidth: 1,
+    borderColor: "#ddd",
+    borderRadius: 12,
+    padding: 14,
     width: "90%",
-    height: "12%",
+    alignSelf: "center",
     flexDirection: "row",
     gap: 10,
-    marginTop: 20,
-    alignSelf: "center",
-    alignContent: "center",
-    borderWidth: 1,
-    borderRadius: 10,
-    padding: 12,
-    paddingHorizontal: 20,
+    marginBottom: 16,
   },
 
-  searchPlaceholder: {
-    marginBottom: 10,
-    fontSize: 20,
-  },
+  searchPlaceholder: {},
 });
