@@ -25,108 +25,199 @@ const windowHeight = Dimensions.get("window").height;
 
 export default function Menu() {
   return (
-    <ScrollView style={styles.mainContainer}>
-      {/* Background Header Image */}
+    <View style={styles.mainContainer}>
+      <ScrollView>
+        {/* Background Header Image */}
+        <ImageBackground
+          source={require("../../assets/background.png")}
+          resizeMode="cover"
+          style={styles.foodBanner}
+        >
+          {/* Top Banner View */}
 
-      <ImageBackground
-        source={require("../../assets/background.png")}
-        resizeMode="cover"
-        style={styles.foodBanner}
-      >
-        {/* Top Banner View */}
-
-        <View>
-          <View style={styles.locationContainer}>
-            <Text style={styles.locationText}>Your Location</Text>
-            <MaterialIcons name="keyboard-arrow-down" size={24} color="white" />
-          </View>
-          <View style={styles.cityContainer}>
-            <Ionicons name="location-outline" size={24} color="white" />
-            <Text style={styles.cityText}>Manchester</Text>
-          </View>
-
-          {/* Top navigation icons */}
-
-          <View style={styles.searchBell}>
-            <View style={styles.iconCircle}>
-              <FontAwesome name="search" size={18} color="white" />
+          <View>
+            <View style={styles.locationContainer}>
+              <Text style={styles.locationText}>Your Location</Text>
+              <MaterialIcons
+                name="keyboard-arrow-down"
+                size={24}
+                color="white"
+              />
             </View>
-            <Link href="/Notifications" asChild>
-              <Pressable style={styles.iconCircle}>
-                <EvilIcons name="bell" size={26} color="white" />
-              </Pressable>
-            </Link>
+            <View style={styles.cityContainer}>
+              <Ionicons name="location-outline" size={24} color="white" />
+              <Text style={styles.cityText}>Manchester</Text>
+            </View>
+
+            {/* Top navigation icons */}
+
+            <View style={styles.searchBell}>
+              <View style={styles.iconCircle}>
+                <FontAwesome name="search" size={18} color="white" />
+              </View>
+              <Link href="/Notifications" asChild>
+                <Pressable style={styles.iconCircle}>
+                  <EvilIcons name="bell" size={26} color="white" />
+                </Pressable>
+              </Link>
+            </View>
           </View>
+          <View>
+            <Text style={styles.lowerText} numberOfLines={2}>
+              Provide the best food for you
+            </Text>
+          </View>
+        </ImageBackground>
+
+        {/* Category Text */}
+
+        <View style={styles.categoryText}>
+          <Text style={styles.findCategoryText}>Find by category</Text>
+          <Text style={styles.seeAllText}>See all</Text>
         </View>
-        <View>
-          <Text style={styles.lowerText}>Provide the best food for you</Text>
+
+        {/* Category Cards */}
+
+        <View style={styles.categoryImages}>
+          <CategoryCard
+            name={"Burger"}
+            image={require("../../assets/burger.png")}
+          />
+          <CategoryCard
+            name={"Taco"}
+            image={require("./../../assets/taco.png")}
+          />
+          <CategoryCard
+            name={"Drink"}
+            image={require("./../../assets/drink.png")}
+          />
+          <CategoryCard
+            name={"Pizza"}
+            image={require("./../../assets/pizza.png")}
+          />
         </View>
-      </ImageBackground>
 
-      {/* Category Text */}
+        {/* Food list */}
 
-      <View style={styles.categoryText}>
-        <Text style={styles.findCategoryText}>Find by category</Text>
-        <Text style={styles.seeAllText}>See all</Text>
-      </View>
-
-      {/* Category Cards */}
-
-      <View style={styles.categoryImages}>
-        <CategoryCard
-          name={"Burger"}
-          image={require("../../assets/burger.png")}
-        />
-        <CategoryCard
-          name={"Taco"}
-          image={require("./../../assets/taco.png")}
-        />
-        <CategoryCard
-          name={"Drink"}
-          image={require("./../../assets/drink.png")}
-        />
-        <CategoryCard
-          name={"Pizza"}
-          image={require("./../../assets/pizza.png")}
-        />
-      </View>
-
-      {/* Food list */}
-
-      <View style={styles.foodList}>
-        <FoodItem
-          title={"Ordinary Burgers"}
-          image={require("./../../assets/burger1.png")}
-          price={"UGX 17,820"}
-          distance={"190m"}
-          rating={"4.5"}
-        />
-        <FoodItem
-          title={"Burger With Meat"}
-          image={require("./../../assets/burger2.png")}
-          price={"UGX 12,260"}
-          distance={"120m"}
-          rating={"4.9"}
-        />
-        <FoodItem
-          title={"Small Size Burger"}
-          image={require("./../../assets/burger3.png")}
-          price={"UGX 9,170"}
-          distance={"80m"}
-          rating={"3.2"}
-        />
-        <FoodItem
-          title={"King Size Burger"}
-          image={require("./../../assets/burger4.png")}
-          price={"UGX 20,620"}
-          distance={"590m"}
-          rating={"5.0"}
-        />
-      </View>
+        <View style={styles.foodList}>
+          <FoodItem
+            title={"Buffalo Burger"}
+            image={require("./../../assets/BuffaloBurger.png")}
+            price={"UGX 17,820"}
+            distance={"190m"}
+            rating={"4.5"}
+          />
+          <FoodItem
+            title={"BBQ Burger"}
+            image={require("./../../assets/BBQBurger.png")}
+            price={"UGX 12,260"}
+            distance={"120m"}
+            rating={"4.9"}
+          />
+          <FoodItem
+            title={"Beef Burger"}
+            image={require("./../../assets/BeefBurger.png")}
+            price={"UGX 9,170"}
+            distance={"80m"}
+            rating={"3.2"}
+          />
+          <FoodItem
+            title={"Chicken Burger"}
+            image={require("./../../assets/ChickenBurger.png")}
+            price={"UGX 20,620"}
+            distance={"590m"}
+            rating={"5.0"}
+          />
+          <FoodItem
+            title={"Crispy Chicken Burger"}
+            image={require("./../../assets/CrispyChickenBurger.png")}
+            price={"UGX 9,170"}
+            distance={"80m"}
+            rating={"3.2"}
+          />
+          <FoodItem
+            title={"Fish Burger"}
+            image={require("./../../assets/FishBurger.png")}
+            price={"UGX 20,620"}
+            distance={"590m"}
+            rating={"5.0"}
+          />
+          <FoodItem
+            title={"Hawaiian BBQ Burger"}
+            image={require("./../../assets/HawaiianBBQBurger.png")}
+            price={"UGX 9,170"}
+            distance={"80m"}
+            rating={"3.2"}
+          />
+          <FoodItem
+            title={"Mexican Zinger Burger"}
+            image={require("./../../assets/MexicanZingerBurger.png")}
+            price={"UGX 20,620"}
+            distance={"590m"}
+            rating={"5.0"}
+          />
+          <FoodItem
+            title={"Small Size Burger"}
+            image={require("./../../assets/burger1.png")}
+            price={"UGX 9,170"}
+            distance={"80m"}
+            rating={"3.2"}
+          />
+          <FoodItem
+            title={"King Size Burger"}
+            image={require("./../../assets/burger2.png")}
+            price={"UGX 20,620"}
+            distance={"590m"}
+            rating={"5.0"}
+          />
+          <FoodItem
+            title={"Small Size Burger"}
+            image={require("./../../assets/burger3.png")}
+            price={"UGX 9,170"}
+            distance={"80m"}
+            rating={"3.2"}
+          />
+          <FoodItem
+            title={"King Size Burger"}
+            image={require("./../../assets/burger4.png")}
+            price={"UGX 20,620"}
+            distance={"590m"}
+            rating={"5.0"}
+          />
+          <FoodItem
+            title={"Small Size Burger"}
+            image={require("./../../assets/burger1.png")}
+            price={"UGX 9,170"}
+            distance={"80m"}
+            rating={"3.2"}
+          />
+          <FoodItem
+            title={"King Size Burger"}
+            image={require("./../../assets/burger2.png")}
+            price={"UGX 20,620"}
+            distance={"590m"}
+            rating={"5.0"}
+          />
+          <FoodItem
+            title={"Small Size Burger"}
+            image={require("./../../assets/burger3.png")}
+            price={"UGX 9,170"}
+            distance={"80m"}
+            rating={"3.2"}
+          />
+          <FoodItem
+            title={"King Size Burger"}
+            image={require("./../../assets/burger4.png")}
+            price={"UGX 20,620"}
+            distance={"590m"}
+            rating={"5.0"}
+          />
+        </View>
+      </ScrollView>
 
       {/* Status Bar configuration */}
       <StatusBar style="light" />
-    </ScrollView>
+    </View>
   );
 }
 
@@ -136,7 +227,7 @@ export default function Menu() {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: "#ffff",
+    backgroundColor: "#fcf1d6",
   },
 
   foodBanner: {
@@ -146,8 +237,11 @@ const styles = StyleSheet.create({
 
   categoryImages: {
     flexDirection: "row",
-    justifyContent: "space-around",
-    paddingHorizontal: 10,
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    rowGap: 16,
+    marginBottom: 10,
   },
 
   locationContainer: {
@@ -185,9 +279,9 @@ const styles = StyleSheet.create({
   },
 
   iconCircle: {
-    width: windowWidth * 0.12,
-    height: 44,
-    borderRadius: 22,
+    width: 44,
+    aspectRatio: 1, // 👈 guarantees square
+    borderRadius: 999,
     borderWidth: 1,
     borderColor: "white",
     justifyContent: "center",
@@ -196,10 +290,11 @@ const styles = StyleSheet.create({
 
   lowerText: {
     color: "white",
-    fontSize: 45,
+    fontSize: 38,
     fontWeight: "600",
     marginTop: 20,
     paddingHorizontal: 20,
+    flexShrink: 1,
   },
 
   categoryText: {
@@ -222,5 +317,6 @@ const styles = StyleSheet.create({
   foodList: {
     flexDirection: "row",
     flexWrap: "wrap",
+    gap: 10,
   },
 });

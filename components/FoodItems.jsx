@@ -6,94 +6,92 @@ export default function FoodItem({ title, image, price, distance, rating }) {
   const router = useRouter();
 
   return (
-    <Pressable
-      onPress={() => router.push("/FoodDetail")}
-      style={styles.foodContainer}
-    >
+    <Pressable onPress={() => router.push("/FoodDetail")} style={styles.card}>
       <View style={styles.favorite}>
-        <Feather name="heart" size={18} color="red" />
+        <Feather name="heart" size={16} color="red" />
       </View>
-      <Image source={image} style={styles.foodItem} />
-      <Text style={styles.foodText}>{title}</Text>
-      <View style={styles.foodRating}>
-        <View style={styles.star}>
-          <AntDesign name="star" size={18} color="orange" />
-          <Text>{rating}</Text>
+
+      <Image source={image} style={styles.image} />
+
+      <Text numberOfLines={2} style={styles.title}>
+        {title}
+      </Text>
+
+      <View style={styles.ratingDistance}>
+        <View style={styles.row}>
+          <AntDesign name="star" size={16} color="orange" />
+          <Text style={styles.ratingText}>{rating}</Text>
         </View>
-        <View style={styles.distance}>
-          <Ionicons name="location-outline" size={18} color="orange" />
-          <Text>{distance}</Text>
+
+        <View style={styles.row}>
+          <Ionicons name="location-outline" size={16} color="orange" />
+          <Text style={styles.ratingText}>{distance}</Text>
         </View>
       </View>
-      <View style={styles.priceContainer}>
-        <Text style={styles.price}>{price}</Text>
-      </View>
+
+      <Text style={styles.price}>{price}</Text>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  foodItem: {
-    width: 141,
-    height: 120,
-    borderRadius: 20,
-    position: "relative",
-  },
-
-  foodContainer: {
-    marginLeft: 20,
-    marginTop: 20,
-    width: 160,
+  card: {
+    width: "47%", // 👈 responsive grid
     backgroundColor: "#fcf8f3",
     borderRadius: 20,
-    padding: 10,
+    padding: 12,
+    marginBottom: 16,
   },
 
-  foodText: {
+  image: {
+    width: "100%",
+    aspectRatio: 1.1, // 👈 keeps image balanced
+    borderRadius: 16,
+    maxHeight: 140,
+    resizeMode: "cover",
+  },
+
+  title: {
     marginTop: 8,
     fontSize: 14,
     fontWeight: "600",
     textAlign: "center",
   },
 
-  foodRating: {
+  ratingDistance: {
     flexDirection: "row",
-    margin: 6,
     justifyContent: "space-between",
+    marginTop: 6,
   },
 
-  star: {
-    flexDirection: "row",
-  },
-
-  distance: {
+  row: {
     flexDirection: "row",
     alignItems: "center",
     gap: 4,
   },
 
-  price: {
-    color: "orange",
-    fontSize: 20,
-    fontWeight: "700",
+  ratingText: {
+    fontSize: 12,
   },
 
-  priceContainer: {
-    flexDirection: "row",
+  price: {
+    marginTop: 6,
+    color: "orange",
+    fontSize: 18,
+    fontWeight: "700",
+    textAlign: "center",
   },
 
   favorite: {
+    position: "absolute",
+    top: 15,
+    right: 12,
     width: 28,
-    height: 28,
-    borderRadius: 14,
-    borderColor: "white",
-    borderWidth: 1,
+    aspectRatio: 1, // 👈 perfect circle
+    borderRadius: 999,
+    backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
-    position: "absolute",
     zIndex: 10,
-    top: 14,
-    right: 14,
-    backgroundColor: "white",
   },
 });

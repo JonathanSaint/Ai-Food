@@ -28,7 +28,7 @@ export default function FoodDetail() {
       <ScrollView style={{ paddingBottom: 220 }}>
         <View style={styles.imageWrapper}>
           <Image
-            source={require("./../assets/burger1.png")}
+            source={require("./../assets/BeefBurger.png")}
             style={styles.foodImage}
           />
           <View style={styles.changeImageContainer}>
@@ -296,5 +296,6 @@ const styles = StyleSheet.create({
   foodList: {
     flexDirection: "row",
     flexWrap: "wrap",
+    gap: 16,
   },
 });
