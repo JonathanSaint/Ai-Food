@@ -28,7 +28,7 @@ export default function FoodDetail() {
       <ScrollView style={{ paddingBottom: 220 }}>
         <View style={styles.imageWrapper}>
           <Image
-            source={require("./../assets/BeefBurger.png")}
+            source={require("./../assets/burgers/BeefBurger.png")}
             style={styles.foodImage}
           />
           <View style={styles.changeImageContainer}>
@@ -72,28 +72,28 @@ export default function FoodDetail() {
         <View style={styles.foodList}>
           <FoodItem
             title={"Ordinary Burgers"}
-            image={require("./../assets/burger1.png")}
+            image={require("./../assets/burgers/burger1.png")}
             price={"UGX 17,820"}
             distance={"190m"}
             rating={"4.5"}
           />
           <FoodItem
             title={"Burger With Meat"}
-            image={require("./../assets/burger2.png")}
+            image={require("./../assets/burgers/burger2.png")}
             price={"UGX 12,260"}
             distance={"120m"}
             rating={"4.9"}
           />
           <FoodItem
             title={"Small Size Burger"}
-            image={require("./../assets/burger3.png")}
+            image={require("./../assets/burgers/burger3.png")}
             price={"UGX 9,170"}
             distance={"80m"}
             rating={"3.2"}
           />
           <FoodItem
             title={"King Size Burger"}
-            image={require("./../assets/burger4.png")}
+            image={require("./../assets/burgers/burger4.png")}
             price={"UGX 20,620"}
             distance={"590m"}
             rating={"5.0"}

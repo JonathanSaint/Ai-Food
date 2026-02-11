@@ -52,9 +52,11 @@ export default function Menu() {
             {/* Top navigation icons */}
 
             <View style={styles.searchBell}>
-              <View style={styles.iconCircle}>
+              <Link href="/Search" asChild>
+                <Pressable style={styles.iconCircle}>
                 <FontAwesome name="search" size={18} color="white" />
-              </View>
+              </Pressable>
+              </Link>
               <Link href="/Notifications" asChild>
                 <Pressable style={styles.iconCircle}>
                   <EvilIcons name="bell" size={26} color="white" />
@@ -102,112 +104,112 @@ export default function Menu() {
         <View style={styles.foodList}>
           <FoodItem
             title={"Buffalo Burger"}
-            image={require("./../../assets/BuffaloBurger.png")}
+            image={require("./../../assets/burgers/BuffaloBurger.png")}
             price={"UGX 17,820"}
             distance={"190m"}
             rating={"4.5"}
           />
           <FoodItem
             title={"BBQ Burger"}
-            image={require("./../../assets/BBQBurger.png")}
+            image={require("./../../assets/burgers/BBQBurger.png")}
             price={"UGX 12,260"}
             distance={"120m"}
             rating={"4.9"}
           />
           <FoodItem
             title={"Beef Burger"}
-            image={require("./../../assets/BeefBurger.png")}
+            image={require("./../../assets/burgers/BeefBurger.png")}
             price={"UGX 9,170"}
             distance={"80m"}
             rating={"3.2"}
           />
           <FoodItem
             title={"Chicken Burger"}
-            image={require("./../../assets/ChickenBurger.png")}
+            image={require("./../../assets/burgers/ChickenBurger.png")}
             price={"UGX 20,620"}
             distance={"590m"}
             rating={"5.0"}
           />
           <FoodItem
             title={"Crispy Chicken Burger"}
-            image={require("./../../assets/CrispyChickenBurger.png")}
+            image={require("./../../assets/burgers/CrispyChickenBurger.png")}
             price={"UGX 9,170"}
             distance={"80m"}
             rating={"3.2"}
           />
           <FoodItem
             title={"Fish Burger"}
-            image={require("./../../assets/FishBurger.png")}
+            image={require("./../../assets/burgers/FishBurger.png")}
             price={"UGX 20,620"}
             distance={"590m"}
             rating={"5.0"}
           />
           <FoodItem
             title={"Hawaiian BBQ Burger"}
-            image={require("./../../assets/HawaiianBBQBurger.png")}
+            image={require("./../../assets/burgers/HawaiianBBQBurger.png")}
             price={"UGX 9,170"}
             distance={"80m"}
             rating={"3.2"}
           />
           <FoodItem
             title={"Mexican Zinger Burger"}
-            image={require("./../../assets/MexicanZingerBurger.png")}
+            image={require("./../../assets/burgers/MexicanZingerBurger.png")}
             price={"UGX 20,620"}
             distance={"590m"}
             rating={"5.0"}
           />
           <FoodItem
             title={"Small Size Burger"}
-            image={require("./../../assets/burger1.png")}
+            image={require("./../../assets/burgers/burger1.png")}
             price={"UGX 9,170"}
             distance={"80m"}
             rating={"3.2"}
           />
           <FoodItem
             title={"King Size Burger"}
-            image={require("./../../assets/burger2.png")}
+            image={require("./../../assets/burgers/burger2.png")}
             price={"UGX 20,620"}
             distance={"590m"}
             rating={"5.0"}
           />
           <FoodItem
             title={"Small Size Burger"}
-            image={require("./../../assets/burger3.png")}
+            image={require("./../../assets/burgers/burger3.png")}
             price={"UGX 9,170"}
             distance={"80m"}
             rating={"3.2"}
           />
           <FoodItem
             title={"King Size Burger"}
-            image={require("./../../assets/burger4.png")}
+            image={require("./../../assets/burgers/burger4.png")}
             price={"UGX 20,620"}
             distance={"590m"}
             rating={"5.0"}
           />
           <FoodItem
             title={"Small Size Burger"}
-            image={require("./../../assets/burger1.png")}
+            image={require("./../../assets/burgers/burger1.png")}
             price={"UGX 9,170"}
             distance={"80m"}
             rating={"3.2"}
           />
           <FoodItem
             title={"King Size Burger"}
-            image={require("./../../assets/burger2.png")}
+            image={require("./../../assets/burgers/burger2.png")}
             price={"UGX 20,620"}
             distance={"590m"}
             rating={"5.0"}
           />
           <FoodItem
             title={"Small Size Burger"}
-            image={require("./../../assets/burger3.png")}
+            image={require("./../../assets/burgers/burger3.png")}
             price={"UGX 9,170"}
             distance={"80m"}
             rating={"3.2"}
           />
           <FoodItem
             title={"King Size Burger"}
-            image={require("./../../assets/burger4.png")}
+            image={require("./../../assets/burgers/burger4.png")}
             price={"UGX 20,620"}
             distance={"590m"}
             rating={"5.0"}

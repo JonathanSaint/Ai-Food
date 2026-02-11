@@ -20,10 +20,7 @@ export default function HelpCenter() {
           color="#d1c9c9"
           style={styles.searchPlaceholder}
         />
-        <TextInput
-          placeholder="Search"
-          style={styles.searchPlaceholder}
-        ></TextInput>
+        <TextInput placeholder="Search" style={styles.searchPlaceholder} />
       </View>
       <View style={styles.topicContainer}>
         <HelpCenterTopic
@@ -88,6 +85,4 @@ const styles = StyleSheet.create({
     gap: 10,
     marginBottom: 16,
   },
-
-  searchPlaceholder: {},
 });

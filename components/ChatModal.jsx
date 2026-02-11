@@ -7,6 +7,7 @@ export default function ChatModal({
   recentMessage,
   timeStamp,
   readStatus,
+  statusNumber,
 }) {
   return (
     <View style={styles.chatsContainer}>
@@ -21,6 +22,9 @@ export default function ChatModal({
       <View style={styles.timeStampContainer}>
         <Text style={styles.timeStamp}>{timeStamp}</Text>
         <View>{readStatus}</View>
+        <View style={styles.statusNumberContainer}>
+          <Text style={styles.statusNumber}>{statusNumber}</Text>
+        </View>
       </View>
     </View>
   );
@@ -30,8 +34,8 @@ const styles = StyleSheet.create({
   chatsContainer: {
     flexDirection: "row",
     width: "90%",
-    height: "21%",
-    justifyContent: "space-between",
+    height: "15%",
+    // justifyContent: "space-between",
     alignItems: "center",
     padding: 10,
     backgroundColor: "#fff",
@@ -70,6 +74,21 @@ const styles = StyleSheet.create({
 
   readStatus: {
     marginLeft: "20%",
+  },
+
+  statusNumber: {
+    color: "white",
+    fontSize: 12,
+    fontWeight: "700",
+  },
+
+  statusNumberContainer: {
+    backgroundColor: "orange",
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   details: {
