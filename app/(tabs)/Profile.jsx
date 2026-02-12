@@ -6,12 +6,12 @@ import {
   StatusBar,
   Image,
   ScrollView,
-  Button,
 } from "react-native";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import {
   Ionicons,
   Feather,
+  AntDesign,
   FontAwesome,
   FontAwesome6,
   MaterialIcons,
@@ -120,6 +120,59 @@ export default function Profile() {
               }
             />
           </View>
+          <View style={styles.supportTextContainer}>
+            <Text style={styles.supportText}>Suggest</Text>
+          </View>
+          <View style={styles.miniContainer}>
+            <Pressable onPress={() => router.push("/HelpCenter")}>
+              <ProfileOptions
+                title={"Help Center"}
+                link={<Link href={"/HelpCenter"} />}
+                mainIcon={
+                  <Ionicons
+                    name="information-circle-outline"
+                    size={24}
+                    color="black"
+                  />
+                }
+                arrowIcon={
+                  <MaterialIcons
+                    name="keyboard-arrow-right"
+                    size={40}
+                    color="black"
+                  />
+                }
+              />
+            </Pressable>
+            <ProfileOptions
+              title={"Request Account Deletion"}
+              mainIcon={
+                <FontAwesome6 name="trash-can" size={24} color="black" />
+              }
+              arrowIcon={
+                <MaterialIcons
+                  name="keyboard-arrow-right"
+                  size={40}
+                  color="black"
+                />
+              }
+            />
+            <ProfileOptions
+              title={"Add another Account"}
+              mainIcon={<AntDesign name="user-add" size={24} color="black" />}
+              arrowIcon={
+                <MaterialIcons
+                  name="keyboard-arrow-right"
+                  size={40}
+                  color="black"
+                />
+              }
+            />
+          </View>
+          <Pressable style={styles.signOutButton}>
+            <Feather name="log-out" size={24} color="red" />
+            <Text style={styles.signOutText}>Sign Out</Text>
+          </Pressable>
         </View>
       </ScrollView>
 
@@ -139,6 +192,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     // justifyContent: "space-between",
     gap: 15,
+    marginBottom: 15,
   },
 
   headerContainer: {
@@ -329,5 +383,36 @@ const styles = StyleSheet.create({
   profileTextContainer: {
     marginHorizontal: 15,
     marginBottom: 18,
+  },
+
+  supportText: {
+    color: "#8e8e93",
+    fontSize: 14,
+    fontWeight: "600",
+  },
+
+  supportTextContainer: {
+    marginHorizontal: 15,
+    marginBottom: 18,
+  },
+
+  signOutButton: {
+    width: "90%",
+    borderWidth: 1,
+    borderColor: "#d7d7e2",
+    flexDirection: "row",
+    backgroundColor: "#fff",
+    borderRadius: 30,
+    padding: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+    alignSelf: "center",
+  },
+
+  signOutText: {
+    color: "#ff0000",
+    fontSize: 18,
+    fontWeight: "600",
   },
 });

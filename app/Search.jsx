@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 
 export default function Search() {
   return (

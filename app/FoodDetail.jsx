@@ -1,3 +1,4 @@
+import { StatusBar } from "expo-status-bar";
 import {
   View,
   Text,
@@ -120,6 +121,7 @@ export default function FoodDetail() {
           <Text style={styles.cartText}>Add to Cart</Text>
         </Pressable>
       </View>
+      <StatusBar style="light" />
     </View>
   );
 }

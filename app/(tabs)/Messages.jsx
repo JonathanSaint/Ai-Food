@@ -1,10 +1,10 @@
+import { StatusBar } from "expo-status-bar";
 import {
   View,
   StyleSheet,
   Text,
   ImageBackground,
   ScrollView,
-  StatusBar,
 } from "react-native";
 import { Link } from "expo-router";
 import { EvilIcons, MaterialCommunityIcons } from "@expo/vector-icons";
@@ -13,12 +13,11 @@ import ChatModal from "../../components/ChatModal";
 export default function Messages() {
   return (
     <View style={styles.mainContainer}>
-      
-        <ImageBackground
-          source={require("./../../assets/MessagePattern.png")}
-          resizeMode="cover"
-          style={styles.MessagePattern}
-        >
+      <ImageBackground
+        source={require("./../../assets/MessagePattern.png")}
+        resizeMode="cover"
+        style={styles.MessagePattern}
+      >
         <ScrollView>
           <View style={styles.headerContainer}>
             <Text style={styles.headerText}>Chat List</Text>
@@ -133,9 +132,9 @@ export default function Messages() {
               statusNumber={5}
             />
           </View>
-      </ScrollView>
-        </ImageBackground>
-      
+        </ScrollView>
+      </ImageBackground>
+
       {/* Status Bar configuration */}
       <StatusBar style="dark" />
     </View>
