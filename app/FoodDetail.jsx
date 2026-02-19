@@ -18,20 +18,34 @@ import {
   FontAwesome5,
 } from "@expo/vector-icons";
 import FoodItem from "../components/FoodItems";
+import { useLocalSearchParams } from "expo-router/build/hooks";
 
 const windowHeight = Dimensions.get("window").height;
 
 export default function FoodDetail() {
+  const params = useLocalSearchParams();
+  const price = Number(params.price);
+
+  // Usestate
   const [quantity, setQuantity] = useState(1);
+  const [quantityPrice, setQuantityPrice] = useState(price);
+
+  console.log(params);
+
+  function handleQuantityIncrease() {
+    setQuantity(quantity + 1);
+    setQuantityPrice(quantityPrice + price);
+  }
+  function handleQuantityDecrease() {
+    setQuantity(quantity - 1);
+    setQuantityPrice(quantityPrice - price);
+  }
 
   return (
     <View style={styles.mainContainer}>
       <ScrollView style={{ paddingBottom: 220 }}>
         <View style={styles.imageWrapper}>
-          <Image
-            source={require("./../assets/burgers/BeefBurger.png")}
-            style={styles.foodImage}
-          />
+          <Image source={params.image} style={styles.foodImage} />
           <View style={styles.changeImageContainer}>
             <View style={styles.changeImage}></View>
             <View style={styles.changeImage}></View>
@@ -39,8 +53,13 @@ export default function FoodDetail() {
           </View>
         </View>
         <View style={styles.foodBio}>
-          <Text style={styles.foodTitle}>Burger With Meat🍔</Text>
-          <Text style={styles.foodPrice}>UGX 12,230</Text>
+          <Text style={styles.foodTitle}>{params.name}</Text>
+          <Text style={styles.foodPrice}>
+            {price.toLocaleString("en-US", {
+              style: "currency",
+              currency: "UGX",
+            })}
+          </Text>
         </View>
         <View style={styles.deliveryContainer}>
           <View style={styles.deliveryDetail}>
@@ -53,7 +72,7 @@ export default function FoodDetail() {
           </View>
           <View style={styles.deliveryDetail}>
             <AntDesign name="star" size={19} color="orange" />
-            <Text style={styles.deliveryText}>4.5</Text>
+            <Text style={styles.deliveryText}>{params.rating}</Text>
           </View>
         </View>
         <View style={styles.horizontalLine}></View>
@@ -104,16 +123,21 @@ export default function FoodDetail() {
       <View style={styles.bottomContainer}>
         <View style={styles.incrementorContainer}>
           <View style={styles.incrementor}>
-            <Pressable onPress={() => setQuantity(quantity - 1)}>
+            <Pressable onPress={handleQuantityDecrease}>
               <Entypo name="minus" size={28} color="black" />
             </Pressable>
             <Text style={styles.incrementorText}>{quantity}</Text>
-            <Pressable onPress={() => setQuantity(quantity + 1)}>
+            <Pressable onPress={handleQuantityIncrease}>
               <Entypo name="plus" size={28} color="black" />
             </Pressable>
           </View>
           <View>
-            <Text style={styles.incrementedPrice}>{quantity * 12230}</Text>
+            <Text style={styles.incrementedPrice}>
+              {quantityPrice.toLocaleString("en-US", {
+                style: "currency",
+                currency: "UGX",
+              })}
+            </Text>
           </View>
         </View>
         <Pressable style={styles.cartButton}>

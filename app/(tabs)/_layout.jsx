@@ -31,21 +31,23 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="Messages"
         options={{
-          headerShown: false,
-          title: "Messages",
+          headerShown: true,
+          title: "Chats",
           tabBarIcon: ({ color }) => (
             <AntDesign name="message" size={24} color={color} />
           ),
+          headerShadowVisible: false,
         }}
       />
       <Tabs.Screen
         name="Profile"
         options={{
-          headerShown: false,
-          title: "Profile",
+          headerShown: true,
+          title: "Profile Settings",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="account" size={24} color={color} />
           ),
+          headerShadowVisible: false,
         }}
       />
     </Tabs>

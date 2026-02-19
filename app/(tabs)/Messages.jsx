@@ -19,12 +19,6 @@ export default function Messages() {
         style={styles.MessagePattern}
       >
         <ScrollView>
-          <View style={styles.headerContainer}>
-            <Text style={styles.headerText}>Chat List</Text>
-          </View>
-          <View style={styles.allMessageContainer}>
-            <Text style={styles.allMessageText}>All Messages</Text>
-          </View>
           <View style={styles.chatContainer}>
             <ChatModal
               username={"Geopart Etdsien"}
@@ -115,6 +109,36 @@ export default function Messages() {
                 />
               }
               statusNumber={11}
+            />
+            <ChatModal
+              username={"Elisia Justin"}
+              image={require("./../../assets/people/person3.png")}
+              recentMessage={"Your Order Just Arrived!"}
+              timeStamp={"11:23"}
+              readStatus={
+                <MaterialCommunityIcons
+                  name="check-all"
+                  size={18}
+                  color="orange"
+                  style={styles.readStatus}
+                />
+              }
+              statusNumber={5}
+            />
+            <ChatModal
+              username={"Elisia Justin"}
+              image={require("./../../assets/people/person3.png")}
+              recentMessage={"Your Order Just Arrived!"}
+              timeStamp={"11:23"}
+              readStatus={
+                <MaterialCommunityIcons
+                  name="check-all"
+                  size={18}
+                  color="orange"
+                  style={styles.readStatus}
+                />
+              }
+              statusNumber={5}
             />
             <ChatModal
               username={"Elisia Justin"}

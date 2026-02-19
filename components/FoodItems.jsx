@@ -1,15 +1,48 @@
-import { View, Text, Image, StyleSheet, Pressable } from "react-native";
-import { Ionicons, Feather, AntDesign } from "@expo/vector-icons";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Pressable,
+  Dimensions,
+} from "react-native";
+import { Ionicons, FontAwesome, AntDesign } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import { useState } from "react";
+
+const windowHeight = Dimensions.get("window").height;
 
 export default function FoodItem({ title, image, price, distance, rating }) {
   const router = useRouter();
 
+  const [isFavorite, setIsFavorite] = useState(false);
+
   return (
-    <Pressable onPress={() => router.push("/FoodDetail")} style={styles.card}>
-      <View style={styles.favorite}>
-        <Feather name="heart" size={16} color="red" />
-      </View>
+    <Pressable
+      onPress={() =>
+        router.push({
+          pathname: "/FoodDetail",
+          params: {
+            name: title,
+            image: image,
+            price: price,
+            distance: distance,
+            rating: rating,
+          },
+        })
+      }
+      style={styles.card}
+    >
+      <Pressable
+        style={styles.favorite}
+        onPress={() => setIsFavorite((isFavorite) => !isFavorite)}
+      >
+        <FontAwesome
+          name={isFavorite ? "heart" : "heart-o"}
+          size={22}
+          color="orange"
+        />
+      </Pressable>
 
       <Image source={image} style={styles.image} />
 
@@ -29,7 +62,9 @@ export default function FoodItem({ title, image, price, distance, rating }) {
         </View>
       </View>
 
-      <Text style={styles.price}>{price}</Text>
+      <Text style={styles.price}>
+        {typeof price === "number" ? `UGX ${price.toLocaleString()}` : price}
+      </Text>
     </Pressable>
   );
 }
@@ -41,11 +76,12 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 12,
     marginBottom: 16,
+    height: windowHeight * 0.27, // 👈 dynamic height
+    marginHorizontal: "1.5%", // 👈 spacing between cards
   },
 
   image: {
     width: "100%",
-    aspectRatio: 1.1, // 👈 keeps image balanced
     borderRadius: 16,
     maxHeight: 140,
     resizeMode: "cover",
@@ -86,9 +122,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 15,
     right: 12,
-    width: 28,
-    aspectRatio: 1, // 👈 perfect circle
-    borderRadius: 999,
+    width: 33,
+    height: 33,
+    borderRadius: 100,
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",

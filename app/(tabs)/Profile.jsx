@@ -22,10 +22,11 @@ import ProfileOptions from "../../components/ProfileOptions";
 export default function Profile() {
   return (
     <View style={styles.mainContainer}>
-      <ScrollView>
-        <SafeAreaView style={styles.headerContainer}>
-          <Text style={styles.headerText}>Profile Settings</Text>
-        </SafeAreaView>
+      <ScrollView
+        contentContainerStyle={{
+          paddingBottom: 50,
+        }}
+      >
         <View style={styles.profileImageContainer}>
           <View style={styles.profilePictureImage}>
             <Image
@@ -209,6 +210,7 @@ const styles = StyleSheet.create({
   profileImageContainer: {
     alignItems: "center",
     marginBottom: 15,
+    marginTop: 20,
   },
 
   profilePictureImage: {
@@ -255,6 +257,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     borderRadius: 20,
     marginHorizontal: 15,
+    borderWidth: 0.18,
+    borderColor: "#d7d7e2",
   },
 
   categoryText: {
