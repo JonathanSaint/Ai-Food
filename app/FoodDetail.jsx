@@ -7,6 +7,7 @@ import {
   Dimensions,
   ScrollView,
   Pressable,
+  FlatList,
 } from "react-native";
 import { useState } from "react";
 import {
@@ -18,20 +19,163 @@ import {
   FontAwesome5,
 } from "@expo/vector-icons";
 import FoodItem from "../components/FoodItems";
+import { useLocalSearchParams } from "expo-router/build/hooks";
 
 const windowHeight = Dimensions.get("window").height;
+const FOODLIST = [
+  {
+    title: "Buffalo Burger",
+    image: require("./../assets/burgers/BuffaloBurger.png"),
+    price: 17820,
+    distance: "190m",
+    rating: "4.5",
+  },
+  {
+    title: "BBQ Burger",
+    image: require("./../assets/burgers/BBQBurger.png"),
+    price: 12260,
+    distance: "120m",
+    rating: "4.9",
+  },
+  {
+    title: "Beef Burger",
+    image: require("./../assets/burgers/BeefBurger.png"),
+    price: 9170,
+    distance: "80m",
+    rating: "3.2",
+  },
+  {
+    title: "Chicken Burger",
+    image: require("./../assets/burgers/ChickenBurger.png"),
+    price: 20620,
+    distance: "590m",
+    rating: "5.0",
+  },
+  {
+    title: "Crispy Chicken Burger",
+    image: require("./../assets/burgers/CrispyChickenBurger.png"),
+    price: 9170,
+    distance: "80m",
+    rating: "3.2",
+  },
+  {
+    title: "Fish Burger",
+    image: require("./../assets/burgers/FishBurger.png"),
+    price: 20620,
+    distance: "590m",
+    rating: "5.0",
+  },
+  {
+    title: "Hawaiian BBQ Burger",
+    image: require("./../assets/burgers/HawaiianBBQBurger.png"),
+    price: 9170,
+    distance: "80m",
+    rating: "3.2",
+  },
+  {
+    title: "Mexican Zinger Burger",
+    image: require("./../assets/burgers/MexicanZingerBurger.png"),
+    price: 20620,
+    distance: "590m",
+    rating: "5.0",
+  },
+  {
+    title: "Small Size Burger",
+    image: require("./../assets/burgers/burger1.png"),
+    price: 9170,
+    distance: "80m",
+    rating: "3.2",
+  },
+  {
+    title: "King Size Burger",
+    image: require("./../assets/burgers/burger2.png"),
+    price: 20620,
+    distance: "590m",
+    rating: "5.0",
+  },
+  {
+    title: "Small Size Burger",
+    image: require("./../assets/burgers/burger3.png"),
+    price: 9170,
+    distance: "80m",
+    rating: "3.2",
+  },
+  {
+    title: "King Size Burger",
+    image: require("./../assets/burgers/burger4.png"),
+    price: 20620,
+    distance: "590m",
+    rating: "5.0",
+  },
+  {
+    title: "Small Size Burger",
+    image: require("./../assets/burgers/burger1.png"),
+    price: 9170,
+    distance: "80m",
+    rating: "3.2",
+  },
+  {
+    title: "King Size Burger",
+    image: require("./../assets/burgers/burger2.png"),
+    price: 20620,
+    distance: "590m",
+    rating: "5.0",
+  },
+  {
+    title: "Small Size Burger",
+    image: require("./../assets/burgers/burger3.png"),
+    price: 9170,
+    distance: "80m",
+    rating: "3.2",
+  },
+  {
+    title: "King Size Burger",
+    image: require("./../assets/burgers/burger4.png"),
+    price: 20620,
+    distance: "590m",
+    rating: "5.0",
+  },
+];
 
 export default function FoodDetail() {
+  const params = useLocalSearchParams();
+  const price = Number(params.price);
   const [quantity, setQuantity] = useState(1);
+  const [quantityPrice, setQuantityPrice] = useState(price);
+  console.log(params);
+
+  function handlePriceIncrease() {
+    setQuantity(quantity + 1);
+    setQuantityPrice(quantityPrice + price);
+  }
+
+  function handlePriceDecrease() {
+    setQuantity(quantity - 1);
+    setQuantityPrice(quantityPrice - price);
+  }
 
   return (
-    <View style={styles.mainContainer}>
-      <ScrollView style={{ paddingBottom: 220 }}>
+    <ScrollView style={styles.mainContainer}>
+      
+      <View style={styles.foodList}>
+          {/* Food list */}
+          <FlatList
+            data={FOODLIST}
+            keyExtractor={(item, index) => `${item.title}-${index}`}
+            renderItem={({ item }) => (
+              <FoodItem
+                title={item.title}
+                image={item.image}
+                price={item.price}
+                distance={item.distance}
+                rating={item.rating}
+              />
+            )}
+            numColumns={2}
+            ListHeaderComponent={
+              <View>
         <View style={styles.imageWrapper}>
-          <Image
-            source={require("./../assets/burgers/BeefBurger.png")}
-            style={styles.foodImage}
-          />
+          <Image source={params.image} style={styles.foodImage} />
           <View style={styles.changeImageContainer}>
             <View style={styles.changeImage}></View>
             <View style={styles.changeImage}></View>
@@ -39,8 +183,13 @@ export default function FoodDetail() {
           </View>
         </View>
         <View style={styles.foodBio}>
-          <Text style={styles.foodTitle}>Burger With Meat🍔</Text>
-          <Text style={styles.foodPrice}>UGX 12,230</Text>
+          <Text style={styles.foodTitle}>{params.name}</Text>
+          <Text style={styles.foodPrice}>
+            {price.toLocaleString("en-US", {
+              style: "currency",
+              currency: "UGX",
+            })}
+          </Text>
         </View>
         <View style={styles.deliveryContainer}>
           <View style={styles.deliveryDetail}>
@@ -53,7 +202,7 @@ export default function FoodDetail() {
           </View>
           <View style={styles.deliveryDetail}>
             <AntDesign name="star" size={19} color="orange" />
-            <Text style={styles.deliveryText}>4.5</Text>
+            <Text style={styles.deliveryText}>{params.rating}</Text>
           </View>
         </View>
         <View style={styles.horizontalLine}></View>
@@ -68,52 +217,27 @@ export default function FoodDetail() {
           <Text style={styles.findCategoryText}>Recommended For You</Text>
           <Text style={styles.seeAllText}>See all</Text>
         </View>
-        {/* Food list */}
-
-        <View style={styles.foodList}>
-          <FoodItem
-            title={"Ordinary Burgers"}
-            image={require("./../assets/burgers/burger1.png")}
-            price={"UGX 17,820"}
-            distance={"190m"}
-            rating={"4.5"}
-          />
-          <FoodItem
-            title={"Burger With Meat"}
-            image={require("./../assets/burgers/burger2.png")}
-            price={"UGX 12,260"}
-            distance={"120m"}
-            rating={"4.9"}
-          />
-          <FoodItem
-            title={"Small Size Burger"}
-            image={require("./../assets/burgers/burger3.png")}
-            price={"UGX 9,170"}
-            distance={"80m"}
-            rating={"3.2"}
-          />
-          <FoodItem
-            title={"King Size Burger"}
-            image={require("./../assets/burgers/burger4.png")}
-            price={"UGX 20,620"}
-            distance={"590m"}
-            rating={"5.0"}
-          />
-        </View>
-      </ScrollView>
-      <View style={styles.bottomContainer}>
+      </View>
+            }
+            ListFooterComponent={
+              <View style={styles.bottomContainer}>
         <View style={styles.incrementorContainer}>
           <View style={styles.incrementor}>
-            <Pressable onPress={() => setQuantity(quantity - 1)}>
+            <Pressable onPress={handlePriceDecrease}>
               <Entypo name="minus" size={28} color="black" />
             </Pressable>
             <Text style={styles.incrementorText}>{quantity}</Text>
-            <Pressable onPress={() => setQuantity(quantity + 1)}>
+            <Pressable onPress={handlePriceIncrease}>
               <Entypo name="plus" size={28} color="black" />
             </Pressable>
           </View>
           <View>
-            <Text style={styles.incrementedPrice}>{quantity * 12230}</Text>
+            <Text style={styles.incrementedPrice}>
+              {quantityPrice.toLocaleString("en-US", {
+                style: "currency",
+                currency: "UGX",
+              })}
+            </Text>
           </View>
         </View>
         <Pressable style={styles.cartButton}>
@@ -121,6 +245,9 @@ export default function FoodDetail() {
           <Text style={styles.cartText}>Add to Cart</Text>
         </Pressable>
       </View>
+            }
+          />
+      
       <StatusBar style="light" />
     </View>
   );
