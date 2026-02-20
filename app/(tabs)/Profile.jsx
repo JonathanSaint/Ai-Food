@@ -255,6 +255,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     borderRadius: 20,
     marginHorizontal: 15,
+    borderWidth: 1,
+    borderColor: "#ceccca",
   },
 
   categoryText: {
@@ -407,6 +409,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 10,
+    marginBottom: 30,
     alignSelf: "center",
   },
 

@@ -1,15 +1,22 @@
+// Status bar control
 import { StatusBar } from "expo-status-bar";
+
+// Core React Native components
 import {
   View,
   Text,
   StyleSheet,
   Image,
   Dimensions,
-  ScrollView,
+  ScrollView, // (Currently not used)
   Pressable,
   FlatList,
 } from "react-native";
+
+// React state hook
 import { useState } from "react";
+
+// Icon libraries
 import {
   Ionicons,
   Feather,
@@ -18,10 +25,17 @@ import {
   FontAwesome,
   FontAwesome5,
 } from "@expo/vector-icons";
+
+// Reusable food card component
 import FoodItem from "../components/FoodItems";
+
+// Hook to access route params from Expo Router
 import { useLocalSearchParams } from "expo-router/build/hooks";
 
+// Get device height for responsive image sizing
 const windowHeight = Dimensions.get("window").height;
+
+// Recommended food list data
 const FOODLIST = [
   {
     title: "Buffalo Burger",
@@ -138,135 +152,169 @@ const FOODLIST = [
 ];
 
 export default function FoodDetail() {
+  // Get parameters passed from previous screen
   const params = useLocalSearchParams();
-  const price = Number(params.price);
-  const [quantity, setQuantity] = useState(1);
-  const [quantityPrice, setQuantityPrice] = useState(price);
-  console.log(params);
 
+  // Convert price from string (params) to number
+  const price = Number(params.price);
+
+  // Quantity state
+  const [quantity, setQuantity] = useState(1);
+
+  // Total price state (price × quantity)
+  const [quantityPrice, setQuantityPrice] = useState(price);
+
+  console.log(params); // Debugging params
+
+  // Increase quantity and total price
   function handlePriceIncrease() {
     setQuantity(quantity + 1);
     setQuantityPrice(quantityPrice + price);
   }
 
+  // Decrease quantity and total price
   function handlePriceDecrease() {
     setQuantity(quantity - 1);
     setQuantityPrice(quantityPrice - price);
   }
 
   return (
-    <ScrollView style={styles.mainContainer}>
-      
+    <View style={styles.mainContainer}>
       <View style={styles.foodList}>
-          {/* Food list */}
-          <FlatList
-            data={FOODLIST}
-            keyExtractor={(item, index) => `${item.title}-${index}`}
-            renderItem={({ item }) => (
-              <FoodItem
-                title={item.title}
-                image={item.image}
-                price={item.price}
-                distance={item.distance}
-                rating={item.rating}
-              />
-            )}
-            numColumns={2}
-            ListHeaderComponent={
-              <View>
-        <View style={styles.imageWrapper}>
-          <Image source={params.image} style={styles.foodImage} />
-          <View style={styles.changeImageContainer}>
-            <View style={styles.changeImage}></View>
-            <View style={styles.changeImage}></View>
-            <View style={styles.changeImage}></View>
+        {/* Recommended food list */}
+        <FlatList
+          data={FOODLIST}
+          keyExtractor={(item, index) => `${item.title}-${index}`}
+          renderItem={({ item }) => (
+            <FoodItem
+              title={item.title}
+              image={item.image}
+              price={item.price}
+              distance={item.distance}
+              rating={item.rating}
+            />
+          )}
+          numColumns={2}
+          // Header content above recommended list
+          ListHeaderComponent={
+            <View>
+              {/* Main food image */}
+              <View style={styles.imageWrapper}>
+                <Image source={params.image} style={styles.foodImage} />
+
+                {/* Image indicator bars */}
+                <View style={styles.changeImageContainer}>
+                  <View style={styles.changeImage}></View>
+                  <View style={styles.changeImage}></View>
+                  <View style={styles.changeImage}></View>
+                </View>
+              </View>
+
+              {/* Food title & price */}
+              <View style={styles.foodBio}>
+                <Text style={styles.foodTitle}>{params.name}</Text>
+                <Text style={styles.foodPrice}>
+                  {price.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "UGX",
+                  })}
+                </Text>
+              </View>
+
+              {/* Delivery details */}
+              <View style={styles.deliveryContainer}>
+                <View style={styles.deliveryDetail}>
+                  <FontAwesome5 name="dollar-sign" size={19} color="orange" />
+                  <Text style={styles.deliveryText}>Free Delivery</Text>
+                </View>
+
+                <View style={styles.deliveryDetail}>
+                  <FontAwesome name="clock-o" size={19} color="orange" />
+                  <Text style={styles.deliveryText}>20 - 30</Text>
+                </View>
+
+                <View style={styles.deliveryDetail}>
+                  <AntDesign name="star" size={19} color="orange" />
+                  <Text style={styles.deliveryText}>{params.rating}</Text>
+                </View>
+              </View>
+
+              {/* Divider */}
+              <View style={styles.horizontalLine}></View>
+
+              {/* Description section */}
+              <View style={styles.descriptionContainer}>
+                <Text style={styles.descriptionTitle}>Description</Text>
+                <Text style={styles.description}>
+                  Burger With Meat is a typical food from our restaurant that is
+                  much in demand by many people, this is very recommended for
+                  you.
+                </Text>
+              </View>
+
+              {/* Recommended header text */}
+              <View style={styles.categoryText}>
+                <Text style={styles.findCategoryText}>Recommended For You</Text>
+                <Text style={styles.seeAllText}>See all</Text>
+              </View>
+            </View>
+          }
+        />
+
+        {/* Bottom fixed section */}
+        <View style={styles.bottomContainer}>
+          {/* Quantity selector & total price */}
+          <View style={styles.incrementorContainer}>
+            <View style={styles.incrementor}>
+              <Pressable onPress={handlePriceDecrease}>
+                <Entypo name="minus" size={28} color="black" />
+              </Pressable>
+
+              <Text style={styles.incrementorText}>{quantity}</Text>
+
+              <Pressable onPress={handlePriceIncrease}>
+                <Entypo name="plus" size={28} color="black" />
+              </Pressable>
+            </View>
+
+            <View>
+              <Text style={styles.incrementedPrice}>
+                {quantityPrice.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "UGX",
+                })}
+              </Text>
+            </View>
           </View>
+
+          {/* Add to cart button */}
+          <Pressable style={styles.cartButton}>
+            <AntDesign name="shopping-cart" size={24} color="white" />
+            <Text style={styles.cartText}>Add to Cart</Text>
+          </Pressable>
         </View>
-        <View style={styles.foodBio}>
-          <Text style={styles.foodTitle}>{params.name}</Text>
-          <Text style={styles.foodPrice}>
-            {price.toLocaleString("en-US", {
-              style: "currency",
-              currency: "UGX",
-            })}
-          </Text>
-        </View>
-        <View style={styles.deliveryContainer}>
-          <View style={styles.deliveryDetail}>
-            <FontAwesome5 name="dollar-sign" size={19} color="orange" />
-            <Text style={styles.deliveryText}>Free Delivery</Text>
-          </View>
-          <View style={styles.deliveryDetail}>
-            <FontAwesome name="clock-o" size={19} color="orange" />
-            <Text style={styles.deliveryText}>20 - 30</Text>
-          </View>
-          <View style={styles.deliveryDetail}>
-            <AntDesign name="star" size={19} color="orange" />
-            <Text style={styles.deliveryText}>{params.rating}</Text>
-          </View>
-        </View>
-        <View style={styles.horizontalLine}></View>
-        <View style={styles.descriptionContainer}>
-          <Text style={styles.descriptionTitle}>Description</Text>
-          <Text style={styles.description}>
-            Burger With Meat is a typical food from our restaurant that is much
-            in demand by many people, this is very recommended for you.
-          </Text>
-        </View>
-        <View style={styles.categoryText}>
-          <Text style={styles.findCategoryText}>Recommended For You</Text>
-          <Text style={styles.seeAllText}>See all</Text>
-        </View>
+
+        {/* Status bar styling */}
+        <StatusBar style="light" />
       </View>
-            }
-            ListFooterComponent={
-              <View style={styles.bottomContainer}>
-        <View style={styles.incrementorContainer}>
-          <View style={styles.incrementor}>
-            <Pressable onPress={handlePriceDecrease}>
-              <Entypo name="minus" size={28} color="black" />
-            </Pressable>
-            <Text style={styles.incrementorText}>{quantity}</Text>
-            <Pressable onPress={handlePriceIncrease}>
-              <Entypo name="plus" size={28} color="black" />
-            </Pressable>
-          </View>
-          <View>
-            <Text style={styles.incrementedPrice}>
-              {quantityPrice.toLocaleString("en-US", {
-                style: "currency",
-                currency: "UGX",
-              })}
-            </Text>
-          </View>
-        </View>
-        <Pressable style={styles.cartButton}>
-          <AntDesign name="shopping-cart" size={24} color="white" />
-          <Text style={styles.cartText}>Add to Cart</Text>
-        </Pressable>
-      </View>
-            }
-          />
-      
-      <StatusBar style="light" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 1,
+    flex: 1, // Full screen height
   },
 
   foodImage: {
     alignSelf: "center",
     width: "100%",
-    height: windowHeight * 0.5,
+    height: windowHeight * 0.5, // Large top image
     borderRadius: 25,
   },
 
   imageWrapper: {
-    position: "relative",
+    position: "relative", // Allows absolute positioning of indicators
   },
 
   changeImageContainer: {
@@ -423,8 +471,7 @@ const styles = StyleSheet.create({
   },
 
   foodList: {
-    flexDirection: "row",
-    flexWrap: "wrap",
+    flex: 1,
     gap: 16,
   },
 });
